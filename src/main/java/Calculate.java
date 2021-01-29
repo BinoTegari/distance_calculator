@@ -2,7 +2,7 @@ package main.java;
 
 import java.lang.*;
 
-public class distanceCalculate {
+public class Calculate {
     public static void main(String[] args) {
         double latitudeA = 53.32055555555556;
         double latitudeB = 53.31861111111111;
