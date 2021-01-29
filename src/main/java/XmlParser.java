@@ -22,18 +22,18 @@ public class XmlParser {
             builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlFile);
             document.getDocumentElement().normalize();
-            System.out.println("корневой элемент: "+ document.getDocumentElement().getNodeName());
+            System.out.println("корневой элемент: " + document.getDocumentElement().getNodeName());
 
             //получаем узлы с именем record, теперь xml полностью загружен в память в виде объекта Document
             NodeList nodeList = document.getElementsByTagName("record");
 
             //создадим из него список объектов record
-            List <Record> rList = new ArrayList<Record>();
-            for(int i=0;i<nodeList.getLength();i++){
+            List<Record> rList = new ArrayList<Record>();
+            for (int i = 0; i < nodeList.getLength(); i++) {
                 rList.add(getRecord(nodeList.item(i)));
             }
             //Напечатаем в консоли информацию по каждому объекту Record
-            for (Record r: rList) {
+            for (Record r : rList) {
                 System.out.println(r.toString());
             }
         } catch (Exception e) {

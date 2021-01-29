@@ -1,7 +1,9 @@
 package main.java;
 
-public class test {
+
+public class testMySql {
     public static void main(String[] args) {
 
     }
+
 }
