@@ -1,3 +1,5 @@
+package main.java;
+
 import java.lang.*;
 
 public class distanceCalculate {
@@ -9,30 +11,24 @@ public class distanceCalculate {
         System.out.println(distanceCrowflight(latitudeA, latitudeB,
                 longitudeA, longitudeB) + " K.M");
     }
-    // Java program to calculate Distance Between
-// Two Points on Earth
-        public static double distanceCrowflight(double latitudeA, double latitudeB, double longitudeA, double longitudeB) {
-            // The math module contains a function
-            // named toRadians which converts from
-            // degrees to radians.
-            longitudeA = Math.toRadians(longitudeA);
-            longitudeB = Math.toRadians(longitudeB);
-            latitudeA = Math.toRadians(latitudeA);
-            latitudeB = Math.toRadians(latitudeB);
 
-            // Haversine formula
-            double dlongitude = longitudeB - longitudeA;
-            double dlatitude = latitudeB - latitudeA;
-            double a = Math.pow(Math.sin(dlatitude / 2), 2) + Math.cos(latitudeA) * Math.cos(latitudeB) * Math.pow(Math.sin(dlongitude / 2),2);
+    public static double distanceCrowflight(double latitudeA, double latitudeB, double longitudeA, double longitudeB) {
 
-            double c = 2 * Math.asin(Math.sqrt(a));
+        longitudeA = Math.toRadians(longitudeA);
+        longitudeB = Math.toRadians(longitudeB);
+        latitudeA = Math.toRadians(latitudeA);
+        latitudeB = Math.toRadians(latitudeB);
 
-            // Radius of earth in kilometers. Use 3956
-            // for miles
-            double r = 6371;
+        double dlongitude = longitudeB - longitudeA;
+        double dlatitude = latitudeB - latitudeA;
+        double a = Math.pow(Math.sin(dlatitude / 2), 2) + Math.cos(latitudeA) * Math.cos(latitudeB) * Math.pow(Math.sin(dlongitude / 2), 2);
 
-            // calculate the result
-            return(c * r);
+        double c = 2 * Math.asin(Math.sqrt(a));
+
+
+        double r = 6371;
+
+        return (c * r);
     }
 }
 
