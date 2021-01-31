@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <records>
     <record>
-        <id>6523</id>
+        <id>1</id>
         <latitude>40.07080078125</latitude>
         <longitude>-74.93360137939453</longitude>
-        <name>Bensalem</name>
+        <name>name1</name>
     </record>
     <record>
-        <id>323361</id>
+        <id>2</id>
         <latitude>38.704022</latitude>
         <longitude>-101.473911</longitude>
-        <name>Leoti</name>
+        <name>name2</name>
     </record>
 </records>

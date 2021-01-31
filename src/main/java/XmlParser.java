@@ -14,7 +14,7 @@ import org.w3c.dom.NodeList;
 
 public class XmlParser {
     public static void main(String[] args) {
-        String filepath = "/Users/user/IdeaProjects/My_School_Lessons/src/Class_Work/city.xml";
+        String filepath = "/Users/user/IdeaProjects/distance_calculator/distance_calculator/library/city.xml";
         File xmlFile = new File(filepath);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
@@ -26,16 +26,24 @@ public class XmlParser {
 
             //получаем узлы с именем record, теперь xml полностью загружен в память в виде объекта Document
             NodeList nodeList = document.getElementsByTagName("record");
+            NodeList nodeListName = document.getElementsByTagName("name");
 
             //создадим из него список объектов record
-            List<Record> rList = new ArrayList<Record>();
+            List<Record> rList = new ArrayList<>();
             for (int i = 0; i < nodeList.getLength(); i++) {
                 rList.add(getRecord(nodeList.item(i)));
             }
-            //Напечатаем в консоли информацию по каждому объекту Record
+//            Напечатаем в консоли информацию по каждому объекту Record
             for (Record r : rList) {
                 System.out.println(r.toString());
             }
+            System.out.println(rList.get(0));
+            Record nameList = rList.get(0);
+            String name = nameList.toString();
+            System.out.println(name.substring(name.indexOf("name = ")+7,name.indexOf("lon")));
+            System.out.println(name.substring(name.indexOf("longitude = ")+12,name.indexOf("lat")));
+            System.out.println(name.substring(name.indexOf("latitude = ")+11,name.indexOf("id")));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
