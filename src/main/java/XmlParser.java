@@ -27,6 +27,7 @@ public class XmlParser {
             //получаем узлы с именем record, теперь xml полностью загружен в память в виде объекта Document
             NodeList nodeList = document.getElementsByTagName("record");
             NodeList nodeListName = document.getElementsByTagName("name");
+            NodeList nodeLongitude = document.getElementsByTagName("longitude");
 
             //создадим из него список объектов record
             List<Record> rList = new ArrayList<>();
@@ -37,13 +38,11 @@ public class XmlParser {
             for (Record r : rList) {
                 System.out.println(r.toString());
             }
-            System.out.println(rList.get(0));
-            Record nameList = rList.get(0);
-            String name = nameList.toString();
-            System.out.println(name.substring(name.indexOf("name = ")+7,name.indexOf("lon")));
-            System.out.println(name.substring(name.indexOf("longitude = ")+12,name.indexOf("lat")));
-            System.out.println(name.substring(name.indexOf("latitude = ")+11,name.indexOf("id")));
-
+            System.out.println(nodeLongitude.item(0).getTextContent());
+            String longitude = nodeLongitude.item(0).getTextContent();
+            double lon = Double.parseDouble(longitude);
+            System.out.println(lon);
+            System.out.println(nodeListName.item(0).getTextContent());
         } catch (Exception e) {
             e.printStackTrace();
         }
