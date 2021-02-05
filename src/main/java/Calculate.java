@@ -1,34 +1,69 @@
 package main.java;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.lang.*;
 import java.util.Scanner;
 
 public class Calculate {
     public static void main(String[] args) {
-        double latitudeA = 53.32055555555556;
-        double latitudeB = 53.31861111111111;
-        double longitudeA = -1.7297222222222221;
-        double longitudeB = -1.6997222222222223;
-        System.out.println(distanceCrowflight(latitudeA, latitudeB,
-                longitudeA, longitudeB) + " K.M");
-        try(Scanner scan = new Scanner(System.in)) {
-            String exit = "";
-            String nameA = "";
-            String nameB = "";
-            do {
-                System.out.println("Введите название первого города: ");
-                nameA = scan.next();
-                System.out.println("Введите название второго города: ");
-                nameB = scan.next();
+        double latitudeA = 0;
+        double latitudeB = 0;
+        double longitudeA = 0;
+        double longitudeB = 0;
 
+        String filepath = "/Users/user/IdeaProjects/distance_calculator/distance_calculator/library/city.xml";
+        File xmlFile = new File(filepath);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        try {
+            builder = factory.newDocumentBuilder();
+            Document document = builder.parse(xmlFile);
+            document.getDocumentElement().normalize();
+            //получаем узлы с именем , теперь xml полностью загружен в память в виде объекта Document
+            NodeList nodeListName = document.getElementsByTagName("name");
+            NodeList nodeLongitude = document.getElementsByTagName("longitude");
+            NodeList nodeLatitude = document.getElementsByTagName("latitude");
 
-            } while (exit == "q");
-        }catch (Exception e){
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Введите название первого города: ");
+            String nameA = scanner.next();
+
+            for (int i = 0; i < nodeListName.getLength(); i++) {
+                String cityA = nodeListName.item(i).getTextContent();
+                if (cityA.equals(nameA)) {
+                    latitudeA = Double.parseDouble(nodeLatitude.item(i).getTextContent());
+                    longitudeA = Double.parseDouble(nodeLongitude.item(i).getTextContent());
+                }
+            }
+
+            System.out.println("Введите название второго города: ");
+            String nameB = scanner.next();
+
+            for (int j=0;j<nodeListName.getLength();j++){
+                String cityB = nodeListName.item(j).getTextContent();
+                if(cityB.equals(nameB)){
+                    latitudeB = Double.parseDouble(nodeLatitude.item(j).getTextContent());
+                    longitudeB = Double.parseDouble((nodeLongitude.item(j).getTextContent()));
+                }
+            }
+
+            System.out.println("Расстояние между городами "+ nameA+" и "+nameB+" равно: "+ distanceCrowflight(latitudeA,latitudeB,longitudeA,longitudeB));
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
-    public static double distanceCrowflight(double latitudeA, double latitudeB, double longitudeA, double longitudeB) {
+
+
+    private static double distanceCrowflight(double latitudeA, double latitudeB, double longitudeA, double longitudeB) {
 
         longitudeA = Math.toRadians(longitudeA);
         longitudeB = Math.toRadians(longitudeB);
@@ -48,3 +83,4 @@ public class Calculate {
     }
 }
 
+//Врядли это вообще хоть кто-то прочитает))Но если ты читаешь это, дай знать, мой целеустремленный товарищ)))

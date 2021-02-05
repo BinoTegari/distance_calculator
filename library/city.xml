@@ -2,14 +2,26 @@
 <records>
     <record>
         <id>1</id>
-        <latitude>40.07080078125</latitude>
-        <longitude>-74.93360137939453</longitude>
-        <name>name1</name>
+        <latitude>53.198627</latitude>
+        <longitude>50.113987</longitude>
+        <name>Самара</name>
     </record>
     <record>
         <id>2</id>
-        <latitude>38.704022</latitude>
-        <longitude>-101.473911</longitude>
-        <name>name2</name>
+        <latitude>55.7504461</latitude>
+        <longitude>37.6174943</longitude>
+        <name>Москва</name>
+    </record>
+    <record>
+        <id>3</id>
+        <latitude>34.0536909</latitude>
+        <longitude>-118.242766</longitude>
+        <name>Лос-Анджелес</name>
+    </record>
+    <record>
+        <id>4</id>
+        <latitude>69.7028171</latitude>
+        <longitude>170.2746851</longitude>
+        <name>Певек</name>
     </record>
 </records>
