@@ -1,4 +1,4 @@
-package main.java;
+package Calculate;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -6,7 +6,6 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.lang.*;
 import java.util.Scanner;
 
 public class Calculate {
@@ -15,7 +14,7 @@ public class Calculate {
         double latitudeB = 0;
         double longitudeA = 0;
         double longitudeB = 0;
-
+        double distance = 0;
         String filepath = "library\\city.xml";
         File xmlFile = new File(filepath);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -24,7 +23,6 @@ public class Calculate {
             builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlFile);
             document.getDocumentElement().normalize();
-            //получаем узлы с именем , теперь xml полностью загружен в память в виде объекта Document
             NodeList nodeListName = document.getElementsByTagName("name");
             NodeList nodeLongitude = document.getElementsByTagName("longitude");
             NodeList nodeLatitude = document.getElementsByTagName("latitude");
@@ -52,18 +50,15 @@ public class Calculate {
                     longitudeB = Double.parseDouble((nodeLongitude.item(j).getTextContent()));
                 }
             }
-
-            System.out.println("Расстояние между городами "+ nameA+" и "+nameB+" равно: "+ distanceCrowflight(latitudeA,latitudeB,longitudeA,longitudeB));
+            distance = distanceCrowflight(latitudeA,latitudeB,longitudeA,longitudeB);
+            System.out.println("Расстояние между городами "+ nameA+" и "+nameB+" равно: "+ distance);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
     }
 
-
-
-    private static double distanceCrowflight(double latitudeA, double latitudeB, double longitudeA, double longitudeB) {
+    public static double distanceCrowflight(double latitudeA, double latitudeB, double longitudeA, double longitudeB) {
 
         longitudeA = Math.toRadians(longitudeA);
         longitudeB = Math.toRadians(longitudeB);

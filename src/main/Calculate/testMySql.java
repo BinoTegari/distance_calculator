@@ -1,5 +1,6 @@
-package main.java;
+package Calculate;
 
+import javax.swing.border.MatteBorder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
@@ -9,16 +10,22 @@ import java.util.*;
 
 public class testMySql {
     public static void main(String[] args) {
-
+        String nameA="";
+        String nameB = "";
+        Double distance = 3445.34443;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = getConnection()) {
 
                 System.out.println("Connection to Store DB succesfull!");
                 Statement statement = conn.createStatement();
+                System.out.println(statement.executeQuery("SELECT NAME FROM city"));
 
 //                int rows = statement.executeUpdate("INSERT City(Name, Latitude, Longitude) VALUES('Samara', 75.6677, 46.875)," + "('Moscow', 23.66, 66.666)");
 //                System.out.println(rows + " добавлены в базу данных");
+
+
+
 
             }
         } catch (Exception ex) {

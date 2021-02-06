@@ -1,4 +1,4 @@
-package main.java;
+package Calculate;
 
 public class Record {
     private String name;
