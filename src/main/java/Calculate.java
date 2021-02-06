@@ -16,7 +16,7 @@ public class Calculate {
         double longitudeA = 0;
         double longitudeB = 0;
 
-        String filepath = "/Users/user/IdeaProjects/distance_calculator/distance_calculator/library/city.xml";
+        String filepath = "library\\city.xml";
         File xmlFile = new File(filepath);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;

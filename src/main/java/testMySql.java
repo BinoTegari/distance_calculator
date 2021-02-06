@@ -16,8 +16,10 @@ public class testMySql {
 
                 System.out.println("Connection to Store DB succesfull!");
                 Statement statement = conn.createStatement();
-                int rows = statement.executeUpdate("INSERT City(Name, Latitude, Longitude) VALUES('Samara', 75.6677, 46.875)," + "('Moscow', 23.66, 66.666)");
-                System.out.println(rows + " добавлены в базу данных");
+
+//                int rows = statement.executeUpdate("INSERT City(Name, Latitude, Longitude) VALUES('Samara', 75.6677, 46.875)," + "('Moscow', 23.66, 66.666)");
+//                System.out.println(rows + " добавлены в базу данных");
+
             }
         } catch (Exception ex) {
             System.out.println("Connection failed...");
@@ -27,7 +29,7 @@ public class testMySql {
     public static Connection getConnection() throws SQLException, IOException {
 
         Properties props = new Properties();
-        try (InputStream in = Files.newInputStream(Paths.get("/Users/user/IdeaProjects/distance_calculator/distance_calculator/library/Database.properties"))) {
+        try (InputStream in = Files.newInputStream(Paths.get("library\\Database.properties"))) {
             props.load(in);
         }
         String url = props.getProperty("url");
