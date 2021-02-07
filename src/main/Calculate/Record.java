@@ -1,4 +1,4 @@
-package Calculate;
+package main.Calculate;
 
 public class Record {
     private String name;

@@ -12,11 +12,11 @@ public class testMatrix {
         p2.x2 = 0;
         p2.y2 = 13;
 
-        System.out.println("Расстояние между точками (" + p1.toString() + ") и (" + p2.toString1() + ") = " + distance(p1,p2));
+        System.out.println("Расстояние между точками (" + p1.toString() + ") и (" + p2.toString1() + ") = " + distanceMatrix(p1,p2));
 
     }
 
-    public static double distance(testMatrix p1, testMatrix p2){
+    public static double distanceMatrix(testMatrix p1, testMatrix p2){
 
         return Math.sqrt((p2.x2 - p1.x1) * (p2.x2 - p1.x1) + (p2.y2 - p1.y1)*(p2.y2 - p1.y1));
 
